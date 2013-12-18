@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BandSox.Utility.UI
+{
+	public class NavigationCommand<T> : System.Windows.Input.ICommand where T : ViewModel.Base
+	{
+		private readonly Func<bool> m_canExecute;
+		private readonly Func<T> m_createViewModel;
+
+		public NavigationCommand ( Func<T> createViewModel )
+		{
+			Contract.AssertNotNull ( ( ) => createViewModel, createViewModel );
+			m_createViewModel = createViewModel;
+		}
+
+		public NavigationCommand ( Func<T> createViewModel, Func<bool> canExecute )
+			: this ( createViewModel )
+		{
+			m_canExecute = canExecute;
+		}
+
+		public bool CanExecute ( object parameter )
+		{
+			return m_canExecute == null || m_canExecute ( );
+		}
+
+		public void Execute ( object parameter )
+		{
+			ServiceLocator.Instance.GetInstance<Navigation.IService> ( ).Navigate ( m_createViewModel ( ) );
+		}
+
+		public event EventHandler CanExecuteChanged;
+	}
+
+	public class NavigationCommandAutoCreate<T> : NavigationCommand<T> where T : ViewModel.Base, new ( )
+	{
+		public NavigationCommandAutoCreate ( )
+			: base ( ( ) => new T ( ) )
+		{
+		}
+
+		public NavigationCommandAutoCreate ( Func<bool> canExecute )
+			: base ( ( ) => new T ( ), canExecute )
+		{
+		}
+	}
+}
