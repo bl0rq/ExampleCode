@@ -10,6 +10,7 @@ namespace App.ViewModel
     {
         public Start ( )
         {
+            /* useless comment */
             Next = new BandSox.Utility.UI.NavigationCommand<Start> ( ( ) => new Start ( ) { Count = m_count + 1 } );
         }
 
