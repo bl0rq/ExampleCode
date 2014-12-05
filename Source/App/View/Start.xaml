@@ -4,7 +4,7 @@
 				 xmlns:local="using:App.View"
 				 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 				 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-				 xmlns:navigation="using:BandSox.Utility.UI.Navigation"
+				 xmlns:navigation="using:Utilis.UI.Navigation"
 				 mc:Ignorable="d">
 	<local:StartBase.Resources>
 		<navigation:BackCommand x:Key="backCommand" />

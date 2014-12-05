@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace App.View
 {
-    public abstract class StartBase : BandSox.Utility.UI.BasePage<ViewModel.Start>
+    public abstract class StartBase : Utilis.UI.BasePage<ViewModel.Start>
     {
         public StartBase()
         {

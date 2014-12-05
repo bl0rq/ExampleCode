@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace App.ViewModel
 {
-    public class Start : BandSox.Utility.UI.ViewModel.Base
+    public class Start : Utilis.UI.ViewModel.Base
     {
         public Start ( )
         {
-            Next = new BandSox.Utility.UI.NavigationCommand<Start> ( ( ) => new Start ( ) { Count = m_count + 1 } );
+            Next = new Utilis.UI.NavigationCommand<Start> ( ( ) => new Start ( ) { Count = m_count + 1 } );
         }
 
         private int m_count = 0;
